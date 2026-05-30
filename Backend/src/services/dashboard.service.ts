@@ -33,10 +33,10 @@ const getLoanOrThrow = async (loanId: string) => {
 
 export const getLoanPaymentSummary = async (loanId: string) => {
   const payments = await Payment.find({ loanId }).sort({ paymentDate: -1 });
-  const totalPaid = Number(payments.reduce((sum, payment) => sum + payment.amount, 0).toFixed(2));
+  const totalPaid = payments.reduce((sum, payment) => sum + payment.amount, 0);
   const loan = await Loan.findById(loanId);
   const outstandingBalance = loan
-    ? Number(Math.max(loan.totalRepayment - totalPaid, 0).toFixed(2))
+    ? Math.max(Math.round(loan.totalRepayment) - totalPaid, 0)
     : 0;
 
   return {
@@ -148,7 +148,7 @@ export const recordPayment = async (loanId: string, actorId: string, input: Reco
     loanId: loan._id,
     borrowerId: loan.borrowerId,
     utrNumber: input.utrNumber,
-    amount: Number(input.amount.toFixed(2)),
+    amount: Math.round(input.amount),
     paymentDate: input.paymentDate,
     recordedBy: new Types.ObjectId(actorId)
   });

@@ -51,9 +51,9 @@ export const formatCurrency = (value: number) =>
   }).format(value);
 
 export const calculateLoan = (amount: number, tenureDays: number) => {
-  const interestAmount = Number(((amount * 12 * tenureDays) / (365 * 100)).toFixed(2));
+  const interestAmount = Math.round((amount * 12 * tenureDays) / (365 * 100));
   return {
     interestAmount,
-    totalRepayment: Number((amount + interestAmount).toFixed(2))
+    totalRepayment: amount + interestAmount
   };
 };
