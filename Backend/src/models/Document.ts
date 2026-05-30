@@ -6,10 +6,11 @@ export interface IDocument {
   userId: Types.ObjectId;
   type: DocumentType;
   originalName: string;
-  fileName: string;
   mimeType: string;
   size: number;
-  path: string;
+  url: string;
+  publicId: string;
+  resourceType: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -30,10 +31,6 @@ const documentSchema = new Schema<IDocument>(
       type: String,
       required: true
     },
-    fileName: {
-      type: String,
-      required: true
-    },
     mimeType: {
       type: String,
       required: true
@@ -42,7 +39,15 @@ const documentSchema = new Schema<IDocument>(
       type: Number,
       required: true
     },
-    path: {
+    url: {
+      type: String,
+      required: true
+    },
+    publicId: {
+      type: String,
+      required: true
+    },
+    resourceType: {
       type: String,
       required: true
     }

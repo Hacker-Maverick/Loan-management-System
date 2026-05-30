@@ -7,19 +7,20 @@ import {
 
 interface BreInput {
   pan: string;
-  dateOfBirth: Date;
+  dateOfBirth: Date | string;
   monthlySalary: number;
   employmentMode: EmploymentMode;
 }
 
 const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
 
-export const calculateAge = (dateOfBirth: Date, today = new Date()) => {
-  let age = today.getFullYear() - dateOfBirth.getFullYear();
-  const monthDifference = today.getMonth() - dateOfBirth.getMonth();
+export const calculateAge = (dateOfBirth: Date | string, today = new Date()) => {
+  const dob = typeof dateOfBirth === "string" ? new Date(dateOfBirth) : dateOfBirth;
+  let age = today.getFullYear() - dob.getFullYear();
+  const monthDifference = today.getMonth() - dob.getMonth();
   const hasBirthdayPassed =
     monthDifference > 0 ||
-    (monthDifference === 0 && today.getDate() >= dateOfBirth.getDate());
+    (monthDifference === 0 && today.getDate() >= dob.getDate());
 
   if (!hasBirthdayPassed) {
     age -= 1;

@@ -61,6 +61,8 @@ export default function SanctionPage() {
             <tbody>
               {loans.map((loan) => {
                 const profile = loan.borrowerProfileId as BorrowerProfile;
+                const salarySlip =
+                  typeof loan.salarySlipId === "string" ? null : loan.salarySlipId;
                 return (
                   <tr key={loan._id} className="border-t border-line">
                     <td className="p-4 font-black">{profile.fullName}</td>
@@ -71,6 +73,16 @@ export default function SanctionPage() {
                     <td className="p-4 font-black">{formatCurrency(loan.totalRepayment)}</td>
                     <td className="p-4">
                       <div className="flex gap-2">
+                        {salarySlip ? (
+                          <a
+                            className="rounded border border-line px-3 py-2 text-xs font-black text-brand"
+                            href={salarySlip.url}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            View Salary Slip
+                          </a>
+                        ) : null}
                         <button onClick={() => approve(loan)} className="rounded bg-green-700 px-3 py-2 text-xs font-black text-white">
                           Approve
                         </button>

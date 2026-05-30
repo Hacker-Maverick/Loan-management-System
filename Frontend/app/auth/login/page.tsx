@@ -53,6 +53,7 @@ export default function LoginPage() {
             <div className="mt-2 flex h-11 items-center gap-2 rounded-md border border-line bg-slate-50 px-3">
               <Mail size={17} className="text-slate-400" />
               <input
+                suppressHydrationWarning
                 className="w-full bg-transparent text-sm outline-none"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -65,6 +66,7 @@ export default function LoginPage() {
             <div className="mt-2 flex h-11 items-center gap-2 rounded-md border border-line bg-slate-50 px-3">
               <Lock size={17} className="text-slate-400" />
               <input
+                suppressHydrationWarning
                 className="w-full bg-transparent text-sm outline-none"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
@@ -75,6 +77,7 @@ export default function LoginPage() {
             </div>
             {error ? <p className="mt-4 rounded-md bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p> : null}
             <button
+              suppressHydrationWarning
               disabled={loading}
               className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-md bg-black font-black text-white disabled:opacity-60"
             >
@@ -83,6 +86,7 @@ export default function LoginPage() {
             </button>
             <div className="my-6 h-px bg-line" />
             <Link
+              suppressHydrationWarning
               href="/auth/register"
               className="flex h-11 items-center justify-center rounded-md border border-line font-bold"
             >

@@ -9,6 +9,7 @@ import type {
   LoanApplicationInput
 } from "../validators/borrower.validators";
 import { runBre } from "./bre.service";
+import { uploadSalarySlipToCloudinary } from "./cloudinary.service";
 import { calculateLoanRepayment } from "./loanMath.service";
 
 export const upsertBorrowerProfile = async (userId: string, input: BorrowerProfileInput) => {
@@ -48,14 +49,17 @@ export const saveSalarySlip = async (userId: string, file: Express.Multer.File |
     throw new AppError(400, "Salary slip file is required");
   }
 
+  const uploadResult = await uploadSalarySlipToCloudinary(file, userId);
+
   const document = await Document.create({
     userId,
     type: "SALARY_SLIP",
     originalName: file.originalname,
-    fileName: file.filename,
     mimeType: file.mimetype,
     size: file.size,
-    path: file.path
+    url: uploadResult.secure_url,
+    publicId: uploadResult.public_id,
+    resourceType: uploadResult.resource_type
   });
 
   return document;

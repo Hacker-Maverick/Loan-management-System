@@ -31,7 +31,7 @@ export interface Loan {
   _id: string;
   borrowerId: string | AuthUser;
   borrowerProfileId: string | BorrowerProfile;
-  salarySlipId: string | { _id: string; originalName: string; path: string };
+  salarySlipId: string | { _id: string; originalName: string; url: string; publicId: string };
   amount: number;
   tenureDays: number;
   interestRateAnnual: number;
