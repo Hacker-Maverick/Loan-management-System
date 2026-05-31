@@ -5,8 +5,8 @@ LendFlow is a robust, full-stack, enterprise-grade **Loan Management System (LMS
 ---
 ##Links
 
-Deployment Link:https://loan-management-system-one-livid.vercel.app
-Demo Vedio Link:https://youtu.be/Tg8FXuwgTnw?si=xnb3ydFVm3det8q7
+- Deployment Link:https://loan-management-system-one-livid.vercel.app
+- Demo Vedio Link:https://youtu.be/Tg8FXuwgTnw?si=xnb3ydFVm3det8q7
 
 ---
 
