@@ -3,6 +3,12 @@
 LendFlow is a robust, full-stack, enterprise-grade **Loan Management System (LMS)** designed with role-based access control (RBAC), a dynamic Business Rules Engine (BRE), and automated status workflows. Built using a modern MERN architecture (**Next.js**, **Express**, **TypeScript**, and **MongoDB**), LendFlow manages the entire loan lifecycle from borrower eligibility analysis to collection tracking and automated ledger settlement.
 
 ---
+##Links
+
+Deployment Link:https://loan-management-system-one-livid.vercel.app
+Demo Vedio Link:https://youtu.be/Tg8FXuwgTnw?si=xnb3ydFVm3det8q7
+
+---
 
 ## 🏗️ System Architecture
 
